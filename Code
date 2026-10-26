@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+class Product {
+    int productid;
+    String name;
+    double price;
+
+    void getDetails(Scanner sc) {
+        System.out.println("Enter Product ID");
+        productid = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Product Name: ");
+        name = sc.nextLine();
+
+        System.out.print("Enter Product Price: ");
+        price = sc.nextDouble();
+    }
+
+    // Display common product details
+    void displayDetails() {
+        System.out.println("Product ID: " + productid);
+        System.out.println("Name: " + name);
+        System.out.println("Price: " + price);
+    }
+
+    // Discount method
+    void applyDiscount() {
+        System.out.println("No discount applied.");
+    }
+}
+
+// Child class 1
+class Electronics extends Product {
+    int warranty;
+
+    void getWarranty(Scanner sc) {
+        System.out.print("Enter Warranty (years): ");
+        warranty = sc.nextInt();
+    }
+
+    // Override discount method
+    @Override
+    void applyDiscount() {
+        double discount = price * 10 / 100;
+
+        System.out.println("Warranty: " + warranty + " years");
+        System.out.println("Discount: 10%");
+        System.out.println("Final Price: " + (price - discount));
+    }
+}
+
+// Child class 2
+class Clothing extends Product {
+    String size;
