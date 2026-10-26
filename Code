@@ -6,7 +6,7 @@ class Product {
     double price;
 
     void getDetails(Scanner sc) {
-        System.out.println("Enter Product ID: ");
+        System.out.print("Enter Product ID: ");
         productid = sc.nextInt();
         sc.nextLine();
 
@@ -17,20 +17,17 @@ class Product {
         price = sc.nextDouble();
     }
 
-    // Display common product details
     void displayDetails() {
         System.out.println("Product ID: " + productid);
         System.out.println("Name: " + name);
         System.out.println("Price: " + price);
     }
 
-    // Discount method
     void applyDiscount() {
         System.out.println("No discount applied.");
     }
 }
 
-// Child class 1
 class Electronics extends Product {
     int warranty;
 
@@ -39,7 +36,6 @@ class Electronics extends Product {
         warranty = sc.nextInt();
     }
 
-    // Override discount method
     @Override
     void applyDiscount() {
         double discount = price * 10 / 100;
@@ -50,7 +46,6 @@ class Electronics extends Product {
     }
 }
 
-// Child class 2
 class Clothing extends Product {
     String size;
 
@@ -69,12 +64,11 @@ class Clothing extends Product {
     }
 }
 
-// Child class 3
 class Groceries extends Product {
     String expiryDate;
 
     void getExpiryDate(Scanner sc) {
-        System.out.print("Enter Expiry Date: ");
+        System.out.print("Enter Expiry Date (DD-MM-YYYY): ");
         expiryDate = sc.next();
     }
 
@@ -88,33 +82,26 @@ class Groceries extends Product {
     }
 }
 
-// Main class
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Electronics product
         System.out.println("\n--- Electronics ---");
         Electronics e = new Electronics();
-
         e.getDetails(sc);
         e.getWarranty(sc);
         e.displayDetails();
         e.applyDiscount();
 
-        // Clothing product
         System.out.println("\n--- Clothing ---");
         Clothing c = new Clothing();
-
         c.getDetails(sc);
         c.getSize(sc);
         c.displayDetails();
         c.applyDiscount();
 
-        // Grocery product
         System.out.println("\n--- Groceries ---");
         Groceries g = new Groceries();
-
         g.getDetails(sc);
         g.getExpiryDate(sc);
         g.displayDetails();
